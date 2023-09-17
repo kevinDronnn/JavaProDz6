@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Game {
@@ -8,8 +9,11 @@ public class Game {
                 "cherry", "garlic", "grape", "melon", "leak", "kiwi", "mango", "mushroom", "nut", "olive",
                 "pea", "peanut", "pear", "pepper", "pineapple", "pumpkin", "potato"};
 
-        String word = words[0];
+        Random random = new Random();
+        int a = random.nextInt(words.length);
+        String word = words[a];
 
+        System.out.println(word);
         System.out.println("Я загадал одно из этих слов, угадай его");
         System.out.println();
 
@@ -22,21 +26,13 @@ public class Game {
         Scanner scanner = new Scanner(System.in);
         String userWord = scanner.nextLine().toLowerCase();
         String res = "";
-        if (userWord.equals(word)) {
-            System.out.println("Вы угадали!");
-        } else {
-            for (int i = 0; i < word.length(); i++) {
-                if (word.charAt(i) == userWord.charAt(i)) {
-                    res += word.charAt(i);
-                }
-            }
-        }
 
-        if (res.length() == 0) {
+        if (res.length() < 0) {
             System.out.println("Вы не угадали ни единой буквы попробуйте еще раз");
             userWord = scanner.nextLine().toLowerCase();
+        }
             while (!word.equals(res)) {
-                for (int i = 0; i < word.length(); i++) {
+                for (int i = 0; i < userWord.length(); i++) {
                     if (word.charAt(i) == userWord.charAt(i)) {
                         res += word.charAt(i);
                     }
@@ -56,4 +52,4 @@ public class Game {
             }
         }
     }
-}
+
